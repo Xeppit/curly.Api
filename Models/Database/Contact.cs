@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace curly.Api.Models.Models.Database
 {
-    public class Person : IEntity
+    public class Contact : IEntity
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

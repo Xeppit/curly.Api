@@ -52,7 +52,7 @@ namespace curly.Api
             services.AddSingleton<CollectionFactory>();
             services.AddSingleton<AddressService>();
             services.AddSingleton<CompanyService>();
-            services.AddSingleton<PersonService>();
+            services.AddSingleton<ContactService>();
             services.AddSingleton<ProjectService>();
             services.AddSingleton<FileSystemService>();
 
