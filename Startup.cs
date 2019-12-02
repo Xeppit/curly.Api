@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using curly.Api.Models.Interfaces;
+using curly.Api.Models.Settings;
+using curly.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace curly.Api
@@ -31,6 +35,29 @@ namespace curly.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
+
+                        // requires using Microsoft.Extensions.Options
+            services.Configure<DatabaseSettings>(
+                Configuration.GetSection(nameof(DatabaseSettings)));
+
+            services.AddSingleton<IDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+
+            services.Configure<FileSystemLocationSettings>(
+                Configuration.GetSection(nameof(FileSystemLocationSettings)));
+
+            services.AddSingleton<IFileSystemLocationSettings>(sp =>
+                sp.GetRequiredService<IOptions<FileSystemLocationSettings>>().Value);
+
+            services.AddSingleton<CollectionFactory>();
+            services.AddSingleton<AddressService>();
+            services.AddSingleton<CompanyService>();
+            services.AddSingleton<PersonService>();
+            services.AddSingleton<ProjectService>();
+            services.AddSingleton<FileSystemService>();
+
+            services.AddControllers()
+                .AddNewtonsoftJson(options => options.UseMemberCasing());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
