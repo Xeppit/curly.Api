@@ -2,7 +2,7 @@ using curly.Api.Models.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace curly.Api.Models.Models.Database
+namespace curly.Api.Models.Database
 {
     public class Project : IEntity
     {

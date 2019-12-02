@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using MongoDB.Driver;
 using System.Linq;
-using curly.Api.Models.Models.Database;
+using curly.Api.Models.Database;
 
 namespace curly.Api.Services
 {

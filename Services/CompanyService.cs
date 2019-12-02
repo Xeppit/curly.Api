@@ -1,4 +1,4 @@
-﻿using curly.Api.Models.Models.Database;
+﻿using curly.Api.Models.Database;
 using MongoDB.Driver;
 
 namespace curly.Api.Services
