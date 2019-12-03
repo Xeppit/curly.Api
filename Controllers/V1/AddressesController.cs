@@ -35,52 +35,31 @@ namespace curly.Api.Controllers.V1.Controllers
         [HttpGet("{id:length(24)}", Name = "Getaddress")]
         public async Task<IActionResult> Get(string id)
         {
-            var address = await _addressService.GetByIdAsync(id);
-
-            if (address == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(address);
+            var _request = new AddressGetByIdRequest(id);
+            var _result = await _mediator.Send(_request);
+            return _result != null ? (IActionResult) Ok(_result) : NotFound();
         }
 
         [HttpPost]
-        public async Task<ActionResult<Address>> Create(Address address)
+        public async Task<ActionResult<Address>> Create(AddressCreateRequest request)
         {
-            var newAddress = await _addressService.InsertOrUpdateAsync(address);
-
-            return CreatedAtRoute("GetAddress", new { id = newAddress.Id.ToString() }, newAddress);
+            var _result = await _mediator.Send(request);
+            return CreatedAtRoute("GetAddress", new { id = _result.Id.ToString() }, _result);
         }
 
         [HttpPut("{id:length(24)}")]
-        public async Task<IActionResult> Update(Address addressIn)
+        public async Task<IActionResult> Update(AddressUpdateRequest request)
         {
-            var address = await _addressService.GetByIdAsync(addressIn.Id);
-
-            if (address == null)
-            {
-                return NotFound();
-            }
-
-            await _addressService.InsertOrUpdateAsync(addressIn);
-
-            return NoContent();
+            var _result = await _mediator.Send(request);
+            return _result != null ? (IActionResult) Ok(_result) : NotFound();
         }
 
         [HttpDelete("{id:length(24)}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var address = _addressService.GetByIdAsync(id);
-
-            if (address == null)
-            {
-                return NotFound();
-            }
-
-            await _addressService.DeleteByIdAsync(id);
-
-            return NoContent();
+            var _request = new AddressDeleteRequest(id);
+            var _result = await _mediator.Send(_request);
+            return _result.DeleteRecords > 0 ? (IActionResult) Ok(_result) : NotFound();
         }
     }
 }

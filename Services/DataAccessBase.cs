@@ -64,7 +64,7 @@ namespace curly.Api.Services
         // Update
         public virtual async Task<bool> UpdateAsync(TEntity document, string updateFieldName, string updateFieldValue)
         {
-            var filter = Builders<TEntity>.Filter.Eq("_id", document.Id);
+            var filter = Builders<TEntity>.Filter.Eq("Id", document.Id);
             var update = Builders<TEntity>.Update.Set(updateFieldName, updateFieldValue);
 
             var result = await _mongoCollection.UpdateOneAsync(filter, update);
@@ -73,11 +73,11 @@ namespace curly.Api.Services
         }
 
         // Delete
-        public async Task<bool> DeleteByIdAsync(string id)
+        public async Task<long> DeleteByIdAsync(string id)
         {
-            var filter = Builders<TEntity>.Filter.Eq("_id", id);
+            var filter = Builders<TEntity>.Filter.Eq("Id", id);
             var result = await _mongoCollection.DeleteOneAsync(filter);
-            return result.DeletedCount != 0;
+            return result.DeletedCount;
         }
 
         // Count

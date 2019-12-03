@@ -1,10 +1,10 @@
 namespace curly.Api.Controllers.V1.Request
 {
-    public class AddressDeleteResponse
+    public class CompanyDeleteResponse
     {
         public long DeleteRecords { get;}
 
-        public AddressDeleteResponse(long deleteRecords)
+        public CompanyDeleteResponse(long deleteRecords)
         {
             DeleteRecords = deleteRecords;
         }
