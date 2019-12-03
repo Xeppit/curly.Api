@@ -20,9 +20,9 @@ namespace curly.Api.Controllers.V1.Controllers
             _companyService = companyService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<Company>>> Get() =>
-            await _companyService.GetAllAsync();
+        // [HttpGet]
+        // public async Task<ActionResult<List<Company>>> Get() =>
+        //     await _companyService.GetAllAsync();
 
         [HttpGet("{id:length(24)}", Name = "GetCompany")]
         public async Task<ActionResult<Company>> Get(string id)

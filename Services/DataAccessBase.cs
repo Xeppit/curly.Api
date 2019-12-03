@@ -45,7 +45,7 @@ namespace curly.Api.Services
         }
 
         // Retrieve
-        public virtual async Task<List<TEntity>> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             //Expression<Func<TEntity, bool>> dataPredicate = entity => (entity.Id == string.Empty);
             return await _mongoCollection.Find(entity => true).ToListAsync();

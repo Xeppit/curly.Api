@@ -20,12 +20,12 @@ namespace curly.Api.Controllers.V1.Controllers
             _projectsService = projectsService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<Project>>> Get()
-        {
-            var projects = await _projectsService.GetAllAsync();
-            return projects;
-        }
+        // [HttpGet]
+        // public async Task<ActionResult<List<Project>>> Get()
+        // {
+        //     var projects = await _projectsService.GetAllAsync();
+        //     return projects;
+        // }
             
         [HttpGet("{id:length(24)}", Name = "GetProject")]
         public async Task<ActionResult<Project>> Get(string id)

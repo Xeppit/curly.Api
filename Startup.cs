@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using curly.Api.Models.Interfaces;
 using curly.Api.Models.Settings;
 using curly.Api.Services;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -47,6 +50,9 @@ namespace curly.Api
 
             services.AddSingleton<IFileSystemLocationSettings>(sp =>
                 sp.GetRequiredService<IOptions<FileSystemLocationSettings>>().Value);
+
+            services.AddMediatR(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddSingleton<CollectionFactory>();
             services.AddSingleton<AddressService>();

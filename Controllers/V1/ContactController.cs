@@ -21,9 +21,9 @@ namespace curly.Api.Controllers.V1.Controllers
             _contactService = contactService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<Contact>>> Get() =>
-            await _contactService.GetAllAsync();
+        // [HttpGet]
+        // public async Task<ActionResult<List<Contact>>> Get() =>
+        //     await _contactService.GetAllAsync();
 
         [HttpGet("{id:length(24)}", Name = "GetContact")]
         public async Task<ActionResult<Contact>> Get(string id)

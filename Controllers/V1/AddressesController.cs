@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using curly.Api.Controllers.V1.Request;
+using curly.Api.Controllers.V1.Response;
 using curly.Api.Models.Database;
 using curly.Api.Services;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,22 +15,25 @@ namespace curly.Api.Controllers.V1.Controllers
     public class AddressesController : ControllerBase
     {
         private readonly AddressService _addressService;
+        private IMediator _mediator;
 
-        public AddressesController(AddressService addressService)
+        public AddressesController(AddressService addressService, IMediator mediator)
         {
             _addressService = addressService;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Address>>> Get()
+        public async Task<IActionResult> Get()
         {
-            var addresses = await _addressService.GetAllAsync();
-            return addresses;
+            var _request = new AddressGetAllRequest();
+            var _result = await _mediator.Send(_request);
+            return Ok(_result);
         }
             
 
         [HttpGet("{id:length(24)}", Name = "Getaddress")]
-        public async Task<ActionResult<Address>> Get(string id)
+        public async Task<IActionResult> Get(string id)
         {
             var address = await _addressService.GetByIdAsync(id);
 
@@ -36,7 +42,7 @@ namespace curly.Api.Controllers.V1.Controllers
                 return NotFound();
             }
 
-            return address;
+            return Ok(address);
         }
 
         [HttpPost]
