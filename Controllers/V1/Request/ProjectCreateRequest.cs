@@ -5,6 +5,7 @@ namespace curly.Api.Controllers.V1.Request
 {
     public class ProjectCreateRequest : IRequest<ProjectCreateResponse>
     {
+        public string Id { get; set; }
         public int Number { get; set; }
         public string Description { get; set; }
         public Address Site { get; set; }

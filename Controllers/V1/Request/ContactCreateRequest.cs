@@ -5,6 +5,7 @@ namespace curly.Api.Controllers.V1.Request
 {
     public class ContactCreateRequest : IRequest<ContactCreateResponse>
     {
+        public string Id { get; set; }
         public Company Company { get; set; }
         public Address Address { get; set; }
         public string FirstName { get; set; }
