@@ -11,6 +11,7 @@ namespace curly.Api.AutoMapperProfiles
         {
             CreateMap<ProjectGetAllRequest, Project>();
             CreateMap<Project, ProjectGetAllResponse>();
+            CreateMap<ProjectGetByIdResponse, Project>();
             CreateMap<Project, ProjectGetByIdResponse>();
             CreateMap<ProjectCreateRequest, Project>();
             CreateMap<Project, ProjectCreateResponse>();

@@ -11,6 +11,7 @@ namespace curly.Api.AutoMapperProfiles
         {
             CreateMap<CompanyGetAllRequest, Company>();
             CreateMap<Company, CompanyGetAllResponse>();
+            CreateMap<CompanyGetByIdResponse, Company>();
             CreateMap<Company, CompanyGetByIdResponse>();
             CreateMap<CompanyCreateRequest, Company>();
             CreateMap<Company, CompanyCreateResponse>();

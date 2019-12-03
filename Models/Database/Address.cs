@@ -13,12 +13,5 @@ namespace curly.Api.Models.Database
         public string Street { get; set; }
         public string Town { get; set; }
         public string Postcode { get; set; }
-
-        //public string ConcatenatedAddressString =>
-        //    this.Name
-        //    + ", " + this.Line1
-        //    + ", " + this.Line2
-        //    + ", " + this.Line3
-        //    + ", " + this.Postcode;
     }
 }

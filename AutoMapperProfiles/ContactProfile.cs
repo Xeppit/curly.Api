@@ -11,6 +11,7 @@ namespace curly.Api.AutoMapperProfiles
         {
             CreateMap<ContactGetAllRequest, Contact>();
             CreateMap<Contact, ContactGetAllResponse>();
+            CreateMap<ContactGetByIdResponse, Contact>();
             CreateMap<Contact, ContactGetByIdResponse>();
             CreateMap<ContactCreateRequest, Contact>();
             CreateMap<Contact, ContactCreateResponse>();
