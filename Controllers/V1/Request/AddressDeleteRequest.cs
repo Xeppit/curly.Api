@@ -1,6 +1,8 @@
+using MediatR;
+
 namespace curly.Api.Controllers.V1.Request
 {
-    public class AddressDeleteRequest
+    public class AddressDeleteRequest : IRequest<AddressDeleteResponse>
     {
         
     }

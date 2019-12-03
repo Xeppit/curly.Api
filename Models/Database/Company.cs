@@ -12,7 +12,5 @@ namespace curly.Api.Models.Database
         public string Name { get; set; }
         public string AddressId { get; set; }
         public string Address { get; set; }
-
-        //public string SearchString => this.Name;
     }
 }

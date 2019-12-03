@@ -1,7 +1,9 @@
+using MediatR;
+
 namespace curly.Api.Controllers.V1.Request
 {
-    public class AddressCreateRequest
+    public class AddressCreateRequest : IRequest<AddressCreateResponse>
     {
-        
+
     }
 }
