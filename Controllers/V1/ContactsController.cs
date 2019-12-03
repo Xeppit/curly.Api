@@ -12,43 +12,43 @@ namespace curly.Api.Controllers.V1.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class ProjectsController : ControllerBase
+    public class ContactsController : ControllerBase
     {
-        private readonly ProjectService _projectService;
+        private readonly ContactService _contactService;
         private IMediator _mediator;
 
-        public ProjectsController(ProjectService projectService, IMediator mediator)
+        public ContactsController(ContactService contactService, IMediator mediator)
         {
-            _projectService = projectService;
+            _contactService = contactService;
             _mediator = mediator;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var _request = new ProjectGetAllRequest();
+            var _request = new ContactGetAllRequest();
             var _result = await _mediator.Send(_request);
             return Ok(_result);
         }
             
 
-        [HttpGet("{id:length(24)}", Name = "Getproject")]
+        [HttpGet("{id:length(24)}", Name = "Getcontact")]
         public async Task<IActionResult> Get(string id)
         {
-            var _request = new ProjectGetByIdRequest(id);
+            var _request = new ContactGetByIdRequest(id);
             var _result = await _mediator.Send(_request);
             return _result != null ? (IActionResult) Ok(_result) : NotFound();
         }
 
         [HttpPost]
-        public async Task<ActionResult<Project>> Create(ProjectCreateRequest request)
+        public async Task<ActionResult<Contact>> Create(ContactCreateRequest request)
         {
             var _result = await _mediator.Send(request);
-            return CreatedAtRoute("GetProject", new { id = _result.Id.ToString() }, _result);
+            return CreatedAtRoute("GetContact", new { id = _result.Id.ToString() }, _result);
         }
 
         [HttpPut("{id:length(24)}")]
-        public async Task<IActionResult> Update(ProjectUpdateRequest request)
+        public async Task<IActionResult> Update(ContactUpdateRequest request)
         {
             var _result = await _mediator.Send(request);
             return _result != null ? (IActionResult) Ok(_result) : NotFound();
@@ -57,7 +57,7 @@ namespace curly.Api.Controllers.V1.Controllers
         [HttpDelete("{id:length(24)}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var _request = new ProjectDeleteRequest(id);
+            var _request = new ContactDeleteRequest(id);
             var _result = await _mediator.Send(_request);
             return _result.DeleteRecords > 0 ? (IActionResult) Ok(_result) : NotFound();
         }
