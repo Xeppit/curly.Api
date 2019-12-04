@@ -1,7 +1,7 @@
 using AutoMapper;
-using curly.Api.Controllers.V2.Command.Address;
-using curly.Api.Controllers.V2.Queries.Address;
-using curly.Api.Controllers.V2.Responses.Address;
+using curly.Api.Controllers.V1.Command;
+using curly.Api.Controllers.V1.Queries;
+using curly.Api.Controllers.V1.Responses;
 using curly.Api.Models.Database;
 
 namespace curly.Api.AutoMapperProfiles
