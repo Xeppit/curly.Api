@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
-using curly.Api.Controllers.V1.Request;
+using curly.Api.Controllers.V2.Command.Address;
+using curly.Api.Controllers.V2.Responses.Address;
 using curly.Api.Services;
 using MediatR;
 

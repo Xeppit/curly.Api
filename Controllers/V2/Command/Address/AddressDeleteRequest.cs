@@ -1,3 +1,4 @@
+using curly.Api.Controllers.V2.Responses.Address;
 using MediatR;
 
 namespace curly.Api.Controllers.V2.Command.Address
