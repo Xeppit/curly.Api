@@ -1,6 +1,7 @@
 using AutoMapper;
-using curly.Api.Controllers.V1.Request;
-using curly.Api.Controllers.V1.Response;
+using curly.Api.Controllers.V2.Command.Address;
+using curly.Api.Controllers.V2.Queries.Address;
+using curly.Api.Controllers.V2.Responses.Address;
 using curly.Api.Models.Database;
 
 namespace curly.Api.AutoMapperProfiles
@@ -10,11 +11,11 @@ namespace curly.Api.AutoMapperProfiles
         public AddressProfile()
         {
             CreateMap<AddressGetAllRequest, Address>();
-            CreateMap<Address, AddressGetAllResponse>();
-            CreateMap<AddressGetByIdResponse, Address>();
-            CreateMap<Address, AddressGetByIdResponse>();
-            CreateMap<AddressCreateRequest, Address>();
-            CreateMap<Address, AddressCreateResponse>();
+            CreateMap<Address, AddressResponse>();
+            CreateMap<AddressResponse, Address>();
+            CreateMap<Address, AddressResponse>();
+            CreateMap<AddressUpsertRequest, Address>();
+            CreateMap<Address, AddressResponse>();
         }
     }
 }

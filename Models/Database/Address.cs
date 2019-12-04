@@ -1,4 +1,5 @@
-﻿using curly.Api.Models.Interfaces;
+﻿using System.Text.Json.Serialization;
+using curly.Api.Models.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
