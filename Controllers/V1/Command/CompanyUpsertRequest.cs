@@ -8,6 +8,6 @@ namespace curly.Api.Controllers.V1.Command
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public Address Address { get; set; }
+        public AddressResponse Address { get; set; }
     }
 }
